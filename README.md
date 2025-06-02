@@ -35,7 +35,7 @@ Do these deliberately 'liberated' sounds merely traumatize the human senses, or 
 **Audio Input / Output Sample:**
 -  [[Input](https://soundcloud.com/2ety8cvnb6hy/not-liberated_frequencies?si=808da9f9b07543609e2672d12e6a9529&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing)]
   <img src="3.png"/>
-- [[Output](https://soundcloud.com/2ety8cvnb6hy/liberated-frequencies?si=cde8297539904961b91409eaa9ee9de8&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing)] 
+-  [[Output](https://soundcloud.com/2ety8cvnb6hy/liberated-frequencies?si=cde8297539904961b91409eaa9ee9de8&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing)] 
   <img src="4.png"/>
 
 ## Python quick start
