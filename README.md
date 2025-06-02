@@ -22,7 +22,7 @@ Do these deliberately 'liberated' sounds merely traumatize the human senses, or 
 **Core features of liberated frequencies include:**
 
 -   Deviation from Wavenet (https://arxiv.org/abs/1609.03499) based sound outouts.
--   Brainwave lawdata receive via OSC from [[Open BCI](https://github.com/OpenBCI/OpenBCI_GUI)]
+-   Brainwave lawdata receive via OSC from [[Open BCI](https://github.com/OpenBCI/OpenBCI_GUI)].
 -   Sound Input and Output with tarageting channels.
 
 For more like concepts, please visit the [liberated frequencies documentation](https://keigoyoshida.jp/room20.html).
