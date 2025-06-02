@@ -11,11 +11,16 @@
 
 </h4>
 
-Open3D is an open-source library that supports rapid development of software
-that deals with 3D data. The Open3D frontend exposes a set of carefully selected
-data structures and algorithms in both C++ and Python. The backend is highly
-optimized and is set up for parallelization. We welcome contributions from
-the open-source community.
+Our Audio Visual Performance, liberated frequencies, explores unprecedented soundscapes that defy our traditional auditory pleasures
+by "liberating" AI from the limitations of human-defined ‘pleasing'.
+Before the production, our team gathered glitch, experimental, voice and noise sounds, which a subject later rated based on the pleasure they evoked.
+During performance, the AI continuously learns in real-time from the highest-rated sounds. Utilizing this sound data, the AI predicts and generates the subsequent auditory experiences, creating an evolving and immersive soundscape.
+The subject in the soundscape wears EEG sensors that measure real-time theta waves (4-8 Hz) of her brain activity. According to Sammler et al. (2007), increased activity in this frequency band is typically associated with intensified auditory pleasure.
+However, in response to this heightened brain-based pleasure, the AI—continuously learning from the real-time EEG data—intentionally disrupts the experience.
+It transforms the generated sounds, subtly altering pitches, waveforms, tempos and syncopations, gradually diverging from the original sound patterns the subject found pleasurable.
+This deliberate shift invites the viewer to explore the boundaries of discomfort, challenging the conventional auditory aesthetics inherently favored by human perception.
+Do these deliberately 'liberated' sounds merely traumatize the human senses,
+or do they open a gateway to new auditory expressions and possibilities?
 
 [![Ubuntu CI](https://github.com/isl-org/Open3D/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/isl-org/Open3D/actions?query=workflow%3A%22Ubuntu+CI%22)
 [![macOS CI](https://github.com/isl-org/Open3D/actions/workflows/macos.yml/badge.svg)](https://github.com/isl-org/Open3D/actions?query=workflow%3A%22macOS+CI%22)
