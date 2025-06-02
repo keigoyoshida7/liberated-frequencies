@@ -27,10 +27,11 @@ Do these deliberately 'liberated' sounds merely traumatize the human senses, or 
 
 ## Python quick start
 
-Please follow the python code wich uploaded. Numer of audio channels are able to detect by audio_channel_detector.py
-For this time, Input Audio comes from Ableton 12 via BlackHole Virtual Audio 16ch to Output for Logic Pro via via BlackHole Virtual Audio 64ch.
-Then, Audio Outs for Interface from Logic Pro.
-Brain EEG data are received via OSC from [[Open BCI](https://github.com/OpenBCI/OpenBCI_GUI)] GUI with 8ch OpenBCI Headset.
+Please follow the python code wich uploaded. Numer of audio channels are able to detect by audio_channel_detector.py<br>
+For this time, Input Audio comes from Ableton 12 via BlackHole Virtual Audio 16ch to Output for Logic Pro via via BlackHole Virtual Audio 64ch.<br>
+Then, Audio Outs for Interface from Logic Pro.<br>
+Brain EEG data are received via OSC from [[Open BCI GUI](https://github.com/OpenBCI/OpenBCI_GUI)] with [[8ch OpenBCI Headset](https://shop.openbci.com/products/the-complete-headset-eeg
+)] .
 
 ```bash
 import pyaudio
