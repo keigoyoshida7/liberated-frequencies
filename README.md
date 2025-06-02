@@ -27,7 +27,7 @@ Do these deliberately 'liberated' sounds merely traumatize the human senses, or 
 
 **Software Usage:**
 
--   OpenBCI GUI, Ableton, Logic Pro, Blachole Virtual Audio 16ch, 64ch.
+-   OpenBCI GUI, Ableton, Logic Pro, BlackHole Virtual Audio 16ch, 64ch.
 
 
 ## Python quick start
