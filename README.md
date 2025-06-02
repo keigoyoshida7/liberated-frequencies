@@ -2,7 +2,7 @@
 <img src="1.png"/>
 </p>
 
-# liberated-frequencies
+# liberated frequencies
 
 <h4>
     <a href="https://keigoyoshida.jp/room20.html">Homepage</a> |
