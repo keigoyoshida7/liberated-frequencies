@@ -25,6 +25,11 @@ Do these deliberately 'liberated' sounds merely traumatize the human senses, or 
 -   Brainwave lawdata receive via OSC from [[Open BCI](https://github.com/OpenBCI/OpenBCI_GUI)].
 -   Sound Input and Output with tarageting channels.
 
+**Software Usage:**
+
+-   OpenBCI GUI, Ableton, Logic Pro, Blachole Virtual Audio 16ch, 64ch.
+
+
 ## Python quick start
 
 Please follow the python code wich uploaded. Numer of audio channels are able to detect by audio_channel_detector.py<br>
