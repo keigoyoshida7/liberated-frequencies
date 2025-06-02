@@ -20,6 +20,7 @@ This deliberate shift invites the viewer to explore the boundaries of discomfort
 Do these deliberately 'liberated' sounds merely traumatize the human senses, or do they open a gateway to new auditory expressions and possibilities?<br>
 
 <img src="2.png"/>
+<img src="5.png"/>
 
 
 **Core features of liberated frequencies include:**
