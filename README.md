@@ -32,6 +32,10 @@ Do these deliberately 'liberated' sounds merely traumatize the human senses, or 
 
 -   OpenBCI GUI, Ableton, Logic Pro, BlackHole Virtual Audio 16ch, 64ch.
 
+**Audio Input Sample:**
+
+<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2051648576&color=ff5500"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/2ety8cvnb6hy" title="Keigo Yoshida" target="_blank" style="color: #cccccc; text-decoration: none;">Keigo Yoshida</a> · <a href="https://soundcloud.com/2ety8cvnb6hy/not-liberated_frequencies" title="(not) liberated frequencies" target="_blank" style="color: #cccccc; text-decoration: none;">(not) liberated frequencies</a></div>
+
 
 ## Python quick start
 
