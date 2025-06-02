@@ -30,7 +30,7 @@ the open-source community.
 
 **Core features of Open3D include:**
 
--   Deviation from Wavenet (https://github.com/isl-org/Open3D/assets/41028320/e9b8645a-a823-4d78-8310-e85207bbc3e4) based sound outouts.
+-   Deviation from Wavenet (https://arxiv.org/abs/1609.03499) based sound outouts.
 -   Brainwave lawdata receive via OSC.
 -   Sound Input and Output with tarageting channels.
 
