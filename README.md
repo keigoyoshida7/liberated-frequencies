@@ -42,34 +42,34 @@ import queue
 from pythonosc import dispatcher, osc_server
 
 # ==================================================
-# ここを主に変更してください (ユーザ設定パラメータ)
+# Main user-defined parameters (change here)
 # ==================================================
 
-# 入力デバイス、出力デバイスのインデックス
-DEVICE_INDEX = 2      # 入力デバイス (例: 1)
-OUTPUT_DEVICE_INDEX = 4 # 出力デバイス (例: 3)
+# Index of input/output audio devices
+DEVICE_INDEX = 2        # Input device index (e.g., 1)
+OUTPUT_DEVICE_INDEX = 4 # Output device index (e.g., 3)
 
-# 入出力のチャンネル数
-INPUT_CHANNELS = 16      # 入力デバイスのチャンネル数
-OUTPUT_CHANNELS = 64     # 出力デバイスのチャンネル数
+# Number of channels for input/output
+INPUT_CHANNELS = 16      # Number of input channels
+OUTPUT_CHANNELS = 64     # Number of output channels
 
-# 入力デバイスのうち「どのチャンネル」を取得するか (0-based)
-TARGET_CHANNEL_INDEX = 0  # 例: 0 => 1ch目を取得
+# Select which input channel to use (0-based)
+TARGET_CHANNEL_INDEX = 0  # e.g., 0 = use 1st channel
 
-# 音声入出力共通設定
+# Common audio I/O settings
 RATE = 44100
 CHUNK = 512
 FORMAT = pyaudio.paFloat32
 
-# WaveNet に一度に渡す音声の長さ(秒)
-# （短めにして推論が追いつきやすくし、途切れを減らす）
+# Length of audio in seconds to pass to WaveNet at once
+# (Shorter = faster inference, less dropout)
 ACCUMULATION_DURATION = 8
 ACCUMULATION_SAMPLES = RATE * ACCUMULATION_DURATION
 
-# クロスフェードに使うサンプル数
+# Number of samples used for crossfade
 CROSSFADE_SAMPLES = 2028
 
-# WaveNetモデルのパラメータ例
+# Example WaveNet model parameters
 WAVENET_IN_CHANNELS     = 1
 WAVENET_OUT_CHANNELS    = 256
 WAVENET_RESIDUAL_CH     = 32
@@ -77,31 +77,31 @@ WAVENET_DILATION_CH     = 32
 WAVENET_SKIP_CH         = 32
 WAVENET_NUM_LAYERS      = 10
 
-# OSC 受信ポート
+# OSC receiving port
 OSC_IP = "192.168.10.4"
 OSC_PORT = 10001
 
-# 特定アドレス: /openbci/time-series-raw/ch4〜ch7
-# これらの平均値が上昇したらランダマイズを強制アップ
+# Monitored OSC addresses: /openbci/time-series-raw/ch4 to ch7
+# If their average increases, force an increase in randomization
 OPENBCI_CHANNELS = ["ch4", "ch5", "ch6", "ch7"]
 values_for_avg = []
 MAX_STORE = 100
 previous_mean = 0.0
 
 # =========================================
-# このフラグで「解析結果＋OSC値」か「解析結果×OSC値」かを切り替える
+# Blend mode flag: add vs. multiply
 # =========================================
 USE_MULTIPLICATIVE_BLEND = False
 
 # =========================================
-# OSCで更新されるランダマイズ率 (0.0〜1.0想定)
-# 解析結果と加算 or 乗算して使う
+# Randomization rates updated via OSC (expected range: 0.0–1.0)
+# Used by adding or multiplying with analysis results
 # =========================================
 waveform_randomization_rate = 0.0
 tempo_randomization_rate    = 0.0
 
 # =========================================
-# WaveNetモデル定義
+# WaveNet model definition
 # =========================================
 class WaveNet(nn.Module):
     def __init__(self, in_channels, out_channels, residual_channels, dilation_channels, skip_channels, num_layers):
@@ -112,7 +112,7 @@ class WaveNet(nn.Module):
 
         for i in range(num_layers):
             dilation = 2 ** i
-            # 入力チャンネルは初回のみ in_channels、それ以外は residual_channels
+            # First layer uses in_channels, others use residual_channels
             self.dilated_convs.append(
                 nn.Conv1d(
                     in_channels if i == 0 else residual_channels,
@@ -132,7 +132,7 @@ class WaveNet(nn.Module):
     def forward(self, x):
         """
         x shape: (batch_size, in_channels, time)
-        戻り値 shape: (batch_size, skip_channels, time)
+        return shape: (batch_size, skip_channels, time)
         """
         skip_connections = []
         for dilated_conv, skip_conv, residual_layer in zip(
@@ -156,11 +156,11 @@ class WaveNet(nn.Module):
         return torch.sum(torch.stack(skip_connections), dim=0)
 
 # =========================================
-# PyAudioストリームを用意
+# Setup PyAudio streams
 # =========================================
 audio = pyaudio.PyAudio()
 
-# 入力ストリーム
+# Input stream
 input_stream = audio.open(
     format=FORMAT,
     channels=INPUT_CHANNELS,
@@ -170,7 +170,7 @@ input_stream = audio.open(
     input_device_index=DEVICE_INDEX
 )
 
-# 出力ストリーム
+# Output stream
 output_stream = audio.open(
     format=FORMAT,
     channels=OUTPUT_CHANNELS,
@@ -181,13 +181,13 @@ output_stream = audio.open(
 )
 
 def get_audio_chunk():
-    """INPUT_CHANNELS のうち TARGET_CHANNEL_INDEX 番目だけ取り出す"""
+    """Extract only the TARGET_CHANNEL_INDEX from INPUT_CHANNELS"""
     data = input_stream.read(CHUNK, exception_on_overflow=False)
     data_np = np.frombuffer(data, dtype=np.float32).reshape(-1, INPUT_CHANNELS)
     return data_np[:, TARGET_CHANNEL_INDEX]
 
 # =========================================
-# WaveNetインスタンス生成
+# Instantiate WaveNet model
 # =========================================
 model = WaveNet(
     in_channels=WAVENET_IN_CHANNELS,
@@ -200,8 +200,8 @@ model = WaveNet(
 model.eval()
 
 # =========================================
-# WaveNet出力を解析する関数
-# (解析結果を次回ランダマイズ率に反映させる)
+# Audio analysis functions
+# (results used to control next randomization rate)
 # =========================================
 def measure_waveform_rms(audio_data: np.ndarray) -> float:
     if len(audio_data) == 0:
@@ -230,7 +230,7 @@ def measure_tempo_naive(audio_data: np.ndarray, sr: int) -> float:
     return float(bpm)
 
 # =========================================
-# ランダマイズ関数群 (非常にラフな実装例)
+# Randomization functions (simple implementation)
 # =========================================
 def randomize_waveform(audio_data, rate):
     if rate <= 0.0:
@@ -246,7 +246,7 @@ def random_tempo(audio_data, rate):
     return np.interp(indices, np.arange(len(audio_data)), audio_data)
 
 # =========================================
-# クロスフェード
+# Crossfade function
 # =========================================
 def crossfade(old_audio: np.ndarray, new_audio: np.ndarray, fade_len: int) -> np.ndarray:
     if len(old_audio) == 0:
@@ -270,14 +270,14 @@ def crossfade(old_audio: np.ndarray, new_audio: np.ndarray, fade_len: int) -> np
     return np.concatenate([old_non_overlap, crossfaded_region, new_non_overlap])
 
 # =========================================
-# 出力キュー (生成した音をためておき、絶え間なく再生する)
+# Output queue (stores generated audio for continuous playback)
 # =========================================
 output_queue = queue.Queue()
 
 # =========================================
-# (1) 入力→WaveNet推論→出力 メインループ
-#     前回生成した音を解析し、(waveform, pitch, tempo, syncopation)を計算
-#     + OSC受信した4つのパラメータでランダマイズ率を決定 → 入力を加工
+# (1) Main loop: input → WaveNet → output
+#     Analyze last output (waveform, tempo, etc.)
+#     Combine with OSC data to determine randomization → modify input
 # =========================================
 def process_input_and_generate():
     global waveform_randomization_rate
@@ -286,27 +286,27 @@ def process_input_and_generate():
     accumulated_audio = np.array([], dtype=np.float32)
     previous_output = np.array([], dtype=np.float32)
 
-    # 前回解析結果
+    # Previous analysis results
     measured_waveform = 0.0
     measured_tempo = 0.0
 
     while True:
-        # 入力を受け取って蓄積
+        # Accumulate input chunks
         chunk = get_audio_chunk()
         accumulated_audio = np.concatenate((accumulated_audio, chunk))
 
-        # 一定量(2秒ぶん)たまったらWaveNet処理
+        # Once enough (e.g., 2 sec), process with WaveNet
         if len(accumulated_audio) >= ACCUMULATION_SAMPLES:
-            # 1) 前回生成した出力を解析
+            # 1) Analyze previous output
             if len(previous_output) > 0:
                 measured_waveform = measure_waveform_rms(previous_output)
                 measured_tempo = measure_tempo_naive(previous_output, RATE)
 
-            # 2) 解析結果を 0.0〜1.0 にスケーリング(お好みで)
+            # 2) Scale analysis results to 0.0–1.0
             wf_r = np.clip(measured_waveform, 0.0, 1.0)
-            te_r = np.clip(measured_tempo/300.0, 0.0, 1.0)   # 300BPM -> 1.0
+            te_r = np.clip(measured_tempo / 300.0, 0.0, 1.0)  # 300 BPM = 1.0
 
-            # 3) OSCで得たランダマイズ率(0.0〜1.0) と (2)の解析結果を合成
+            # 3) Blend analysis results with OSC randomization rate
             if USE_MULTIPLICATIVE_BLEND:
                 wave_rate = wf_r * waveform_randomization_rate
                 tempo_rate = te_r * tempo_randomization_rate
@@ -314,36 +314,35 @@ def process_input_and_generate():
                 wave_rate = wf_r + waveform_randomization_rate
                 tempo_rate = te_r + tempo_randomization_rate
             
-            # クリップ
             wave_rate = np.clip(wave_rate, 0.0, 1.0)
             tempo_rate = np.clip(tempo_rate, 0.0, 1.0)
 
-            # 4) 上記レートで入力音を加工 → WaveNet 推論
+            # 4) Modify input audio → pass to WaveNet
             seg = accumulated_audio[:ACCUMULATION_SAMPLES]
             seg = randomize_waveform(seg, wave_rate)
             seg = random_tempo(seg, tempo_rate)
 
             input_tensor = torch.from_numpy(seg).unsqueeze(0).unsqueeze(0).float()
             output_tensor = model(input_tensor)  # (1, skip_ch, T)
-            output_tensor = output_tensor.mean(dim=1, keepdim=True)  # モノラル化
+            output_tensor = output_tensor.mean(dim=1, keepdim=True)  # Convert to mono
             new_output = output_tensor.squeeze().detach().numpy()
 
-            # 5) クロスフェードして次回解析用に保持
+            # 5) Crossfade with previous output
             crossfaded_output = crossfade(previous_output, new_output, CROSSFADE_SAMPLES)
             previous_output = crossfaded_output
 
-            # 6) 出力用バッファを作成 (OUTPUT_CHANNELS のうち指定チャンネルだけに書き込む)
+            # 6) Create output buffer (write only to TARGET_CHANNEL_INDEX)
             frames_out = np.zeros((len(crossfaded_output), OUTPUT_CHANNELS), dtype=np.float32)
             frames_out[:, TARGET_CHANNEL_INDEX] = crossfaded_output
 
-            # 7) 出力キューに詰める
+            # 7) Push to output queue
             output_queue.put(frames_out)
 
-            # 8) 蓄積分を削除
+            # 8) Remove used portion from accumulation
             accumulated_audio = accumulated_audio[ACCUMULATION_SAMPLES:]
 
 # =========================================
-# (2) 出力ループ - output_queue から取り出して絶えず再生
+# (2) Output loop - continuously play from output_queue
 # =========================================
 def audio_output_loop():
     while True:
@@ -353,82 +352,67 @@ def audio_output_loop():
         output_stream.write(frames.tobytes())
 
 # =========================================
-# (3) OSC受信
-#     /openbci/time-series-raw/ch4〜ch7 のアドレスだけを監視し、平均が前回より上昇したらランダマイズを強制アップ
-#     さらに /waveform, /pitch, /tempo, /syncopation が来たら 0.0〜1.0 のパラメータを更新
+# (3) OSC listener
+#     Monitor /openbci/time-series-raw/ch4 to ch7;
+#     if average increases, boost randomization
+#     Also respond to /waveform, /pitch, /tempo, /syncopation
 # =========================================
-def osc_message_handler(address, *args):
+
+# =========================================
+# (3) OSC Receiver
+#     Monitor only the addresses /openbci/time-series-raw/ch4 to ch7,
+#     and if the average increases compared to the previous value, force waveform randomization.
+#     Additionally, if /waveform, /pitch, /tempo, /syncopation are received,
+#     update the randomization rate accordingly.
+# =========================================
+def osc_handler(address, *args):
     global waveform_randomization_rate
     global tempo_randomization_rate
-    global values_for_avg, previous_mean
+    global values_for_avg
+    global previous_mean
 
-    if len(args) == 0:
-        return
-    val = float(args[0])
+    # Handle OpenBCI channels
+    if any(ch in address for ch in OPENBCI_CHANNELS):
+        try:
+            value = float(args[0])
+        except:
+            return
+        values_for_avg.append(value)
+        if len(values_for_avg) > MAX_STORE:
+            values_for_avg = values_for_avg[-MAX_STORE:]
+        current_mean = np.mean(values_for_avg)
+        if current_mean > previous_mean:
+            waveform_randomization_rate = min(1.0, waveform_randomization_rate + 0.1)
+            tempo_randomization_rate = min(1.0, tempo_randomization_rate + 0.1)
+        previous_mean = current_mean
 
-    # 1) /waveform, /pitch, /tempo, /syncopation を受け取ったら 0.0〜1.0 に設定
-    #    (もし 0〜100 で送ってくるなら、 /100.0 するなど)
-    if address == "/waveform":
-        waveform_randomization_rate = np.clip(val, 0.0, 1.0)
-    elif address == "/tempo":
-        tempo_randomization_rate = np.clip(val, 0.0, 1.0)
+    # Handle specific parameters
+    if "/waveform" in address:
+        waveform_randomization_rate = np.clip(float(args[0]), 0.0, 1.0)
+    elif "/tempo" in address:
+        tempo_randomization_rate = np.clip(float(args[0]), 0.0, 1.0)
 
-    # 2) /openbci/time-series-raw/ch4〜ch7 かどうかを判定
-    if "/openbci/time-series-raw/" in address:
-        # ch4~ch7 のどれかが含まれていれば
-        if any(ch in address for ch in OPENBCI_CHANNELS):
-            # 値を蓄積
-            values_for_avg.append(val)
-            if len(values_for_avg) > MAX_STORE:
-                values_for_avg.pop(0)
-            current_mean = np.mean(values_for_avg)
-            # 上昇検出
-            if current_mean > previous_mean:
-                waveform_randomization_rate      = 0.001
-                tempo_randomization_rate         = 0.001
-            previous_mean = current_mean
-
+# =========================================
+# Start OSC server in a separate thread
+# =========================================
 def start_osc_server():
     disp = dispatcher.Dispatcher()
-    # すべての OSC メッセージを共通ハンドラで処理
-    disp.set_default_handler(osc_message_handler)
+    for ch in OPENBCI_CHANNELS:
+        disp.map(f"/openbci/time-series-raw/{ch}", osc_handler)
+    disp.map("/waveform", osc_handler)
+    disp.map("/tempo", osc_handler)
 
     server = osc_server.ThreadingOSCUDPServer((OSC_IP, OSC_PORT), disp)
-    print(f"OSC server started on {OSC_IP}:{OSC_PORT}")
+    print(f"Listening on {OSC_IP}:{OSC_PORT}...")
     server.serve_forever()
 
 # =========================================
-# メイン
+# Main execution
 # =========================================
-def main():
-    # (A) OSCサーバースレッド
-    osc_thread = threading.Thread(target=start_osc_server, daemon=True)
-    osc_thread.start()
-
-    # (B) WaveNet生成スレッド
-    gen_thread = threading.Thread(target=process_input_and_generate, daemon=True)
-    gen_thread.start()
-
-    # (C) 出力再生スレッド
-    out_thread = threading.Thread(target=audio_output_loop, daemon=True)
-    out_thread.start()
-
-    print("Running... Press Ctrl+C to stop.")
-    try:
-        while True:
-            pass
-    except KeyboardInterrupt:
-        print("Stopping...")
-        # 終了処理
-        input_stream.stop_stream()
-        input_stream.close()
-        output_stream.stop_stream()
-        output_stream.close()
-        audio.terminate()
-        output_queue.put(None)
-
 if __name__ == "__main__":
-    main()
+    threading.Thread(target=start_osc_server, daemon=True).start()
+    threading.Thread(target=process_input_and_generate, daemon=True).start()
+    audio_output_loop()
 
 ```
 
