@@ -19,7 +19,7 @@ It transforms the generated sounds, subtly altering pitches, waveforms, tempos a
 This deliberate shift invites the viewer to explore the boundaries of discomfort, challenging the conventional auditory aesthetics inherently favored by human perception.<br>
 Do these deliberately 'liberated' sounds merely traumatize the human senses, or do they open a gateway to new auditory expressions and possibilities?<br>
 
-[![Open BCI](https://github.com/OpenBCI/OpenBCI_GUI)
+[![Open BCI](https://github.com/OpenBCI/OpenBCI_GUI)]
 
 **Core features of Open3D include:**
 
