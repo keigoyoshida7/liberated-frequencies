@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/isl-org/Open3D/main/docs/_static/open3d_logo_horizontal.png" width="320" />
+<img src="1.png" width="320" />
 </p>
 
 # liberated-frequencies
