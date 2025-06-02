@@ -11,10 +11,8 @@
 
 </h4>
 
-Our Audio Visual Performance, liberated frequencies, explores unprecedented soundscapes that defy our traditional auditory pleasures <br>
-by "liberating" AI from the limitations of human-defined ‘pleasing'.<br>
-Before the production, our team gathered glitch, experimental, voice and noise sounds, which a subject later rated based on the pleasure they evoked.<br>
-During performance, the AI continuously learns in real-time from the highest-rated sounds. Utilizing this sound data, the AI predicts and generates the subsequent auditory experiences, <br>creating an evolving and immersive soundscape.<br>
+liberated frequencies, explores unprecedented soundscapes that defy our traditional auditory pleasures by "liberating" AI from the limitations of human-defined ‘pleasing'.<br>
+The AI continuously learns in real-time from the highest-rated sounds. Utilizing this sound data, the AI predicts and generates the subsequent auditory experiences, <br>creating an evolving and immersive soundscape.<br>
 The subject in the soundscape wears EEG sensors that measure real-time theta waves (4-8 Hz) of her brain activity. According to Sammler et al. (2007), increased activity in this frequency band is typically associated with intensified auditory pleasure.<br>
 However, in response to this heightened brain-based pleasure, the AI—continuously learning from the real-time EEG data—intentionally disrupts the experience.<br>
 It transforms the generated sounds, subtly altering pitches, waveforms, tempos and syncopations, gradually diverging from the original sound patterns the subject found pleasurable.<br>
