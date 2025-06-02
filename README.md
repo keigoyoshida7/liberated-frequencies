@@ -19,6 +19,9 @@ It transforms the generated sounds, subtly altering pitches, waveforms, tempos a
 This deliberate shift invites the viewer to explore the boundaries of discomfort, challenging the conventional auditory aesthetics inherently favored by human perception.<br>
 Do these deliberately 'liberated' sounds merely traumatize the human senses, or do they open a gateway to new auditory expressions and possibilities?<br>
 
+<img src="2.png"/>
+
+
 **Core features of liberated frequencies include:**
 
 -   Deviation from Wavenet (https://arxiv.org/abs/1609.03499) based sound outouts.
