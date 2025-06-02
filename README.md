@@ -25,12 +25,9 @@ Do these deliberately 'liberated' sounds merely traumatize the human senses, or 
 -   Brainwave lawdata receive via OSC from [[Open BCI](https://github.com/OpenBCI/OpenBCI_GUI)].
 -   Sound Input and Output with tarageting channels.
 
-For more like concepts, please visit the [liberated frequencies documentation](https://keigoyoshida.jp/room20.html).
-
 ## Python quick start
 
-Pre-built pip packages support Ubuntu 20.04+, macOS 10.15+ and Windows 10+
-(64-bit) with Python 3.8-3.11.
+Please follow the python code wich uploaded. Numer of audio channels are able to detect by audio_channel_detector.py
 
 ```bash
 import pyaudio
