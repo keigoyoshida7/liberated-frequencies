@@ -31,7 +31,7 @@ Please follow the python code wich uploaded. Numer of audio channels are able to
 For this time, Input Audio comes from Ableton 12 via BlackHole Virtual Audio 16ch to Output for Logic Pro via via BlackHole Virtual Audio 64ch.<br>
 Then, Audio Outs for Interface from Logic Pro.<br>
 Brain EEG data are received via OSC from [[Open BCI GUI](https://github.com/OpenBCI/OpenBCI_GUI)] with [[8ch OpenBCI Headset](https://shop.openbci.com/products/the-complete-headset-eeg
-)] .
+)].
 
 ```bash
 import pyaudio
