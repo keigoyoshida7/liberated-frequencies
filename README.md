@@ -116,13 +116,13 @@ top of the Open3D core library and extends it with machine learning tools for
 
 ## Citation
 
-Please cite [our work](https://arxiv.org/abs/1801.09847) if you use Open3D.
+Please cite our work if you use liberated frequencies.
 
 ```bib
 @article{Zhou2018,
-    author    = {Qian-Yi Zhou and Jaesik Park and Vladlen Koltun},
-    title     = {{Open3D}: {A} Modern Library for {3D} Data Processing},
-    journal   = {arXiv:1801.09847},
-    year      = {2018},
+    author    = {Keigo Yoshida and Rinko Oka and Ryuji Kurokawa (Arsaffix)},
+    title     = {liberated frequencies},
+    journal   = {none},
+    year      = {2024},
 }
 ```
