@@ -5,9 +5,9 @@
 # liberated-frequencies
 
 <h4>
-    <a href="https://www.open3d.org">Homepage</a> |
-    <a href="https://www.open3d.org/docs">Archives</a> |
-    <a href="https://www.open3d.org/docs/release/getting_started.html">This project Support by METI and Rhizomatiks as "Flying Tokyo 2024"</a> |
+    <a href="https://keigoyoshida.jp/room20.html">Homepage</a> |
+    <a href="https://www.instagram.com/p/DGqFPAOO3oo/">Archives</a> |
+    <a href="https://flyingtokyo.com/open-call/">This project Support by METI and Rhizomatiks as "Flying Tokyo 2024"</a> |
 
 </h4>
 
