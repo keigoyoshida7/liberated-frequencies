@@ -52,12 +52,6 @@ python -c "import open3d as o3d; \
 open3d example visualization/draw
 ```
 
-To get the latest features in Open3D, install the
-[development pip package](https://www.open3d.org/docs/latest/getting_started.html#development-version-pip).
-To compile Open3D from source, refer to
-[compiling from source](https://www.open3d.org/docs/release/compilation.html).
-
-
 ## Communication channels
 
 -   [Instagram DM](https://www.instagram.com/keigoyoshida_/): bug reports,
