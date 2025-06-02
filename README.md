@@ -1,5 +1,5 @@
 <p align="center">
-<img src="1.png" width="320" />
+<img src="1.png"/>
 </p>
 
 # liberated-frequencies
