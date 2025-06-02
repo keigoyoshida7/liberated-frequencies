@@ -352,13 +352,6 @@ def audio_output_loop():
         output_stream.write(frames.tobytes())
 
 # =========================================
-# (3) OSC listener
-#     Monitor /openbci/time-series-raw/ch4 to ch7;
-#     if average increases, boost randomization
-#     Also respond to /waveform, /pitch, /tempo, /syncopation
-# =========================================
-
-# =========================================
 # (3) OSC Receiver
 #     Monitor only the addresses /openbci/time-series-raw/ch4 to ch7,
 #     and if the average increases compared to the previous value, force waveform randomization.
