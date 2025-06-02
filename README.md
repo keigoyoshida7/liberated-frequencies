@@ -7,7 +7,7 @@
 <h4>
     <a href="https://keigoyoshida.jp/room20.html">Homepage</a> |
     <a href="https://www.instagram.com/p/DGqFPAOO3oo/">Archive Videos</a> |
-    <a href="https://flyingtokyo.com/open-call/">This project was supported by METI and Rhizomatiks as "Flying Tokyo 2024"</a> |
+    <a href="https://flyingtokyo.com/open-call/">This project supported by METI and Rhizomatiks as "Flying Tokyo 2024"</a> |
 
 </h4>
 
