@@ -31,7 +31,7 @@ Do these deliberately 'liberated' sounds merely traumatize the human senses, or 
 
 **Software Usage:**
 
--   OpenBCI GUI, Ableton, Logic Pro, BlackHole Virtual Audio 16ch, 64ch.
+-   OpenBCI GUI, Visual Studio Code, Ableton, Logic Pro, BlackHole Virtual Audio 16ch, 64ch.
 
 **Audio Input Sample:**
 -  [[Input](https://soundcloud.com/2ety8cvnb6hy/not-liberated_frequencies?si=808da9f9b07543609e2672d12e6a9529&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing)]
