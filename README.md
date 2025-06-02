@@ -13,7 +13,7 @@
 
 liberated frequencies, explores unprecedented soundscapes that defy our traditional auditory pleasures by "liberating" AI from the limitations of human-defined ‘pleasing'.<br>
 The AI continuously learns in real-time from the highest-rated sounds. Utilizing this sound data, the AI predicts and generates the subsequent auditory experiences, creating an evolving and immersive soundscape.<br>
-The subject in the soundscape wears EEG sensors that measure real-time theta waves (4-8 Hz) of her brain activity. According to Sammler et al. (2007), increased activity in this frequency band is typically associated with intensified auditory pleasure.<br>
+The subject in the soundscape wears EEG sensors that measure real-time theta waves (4-8 Hz) of her brain activity. <br>According to Sammler et al. (2007), increased activity in this frequency band is typically associated with intensified auditory pleasure.<br>
 However, in response to this heightened brain-based pleasure, the AI—continuously learning from the real-time EEG data—intentionally disrupts the experience.<br>
 It transforms the generated sounds, subtly altering pitches, waveforms, tempos and syncopations, gradually diverging from the original sound patterns the subject found pleasurable.<br>
 This deliberate shift invites the viewer to explore the boundaries of discomfort, challenging the conventional auditory aesthetics inherently favored by human perception.<br>
