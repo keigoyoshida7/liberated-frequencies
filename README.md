@@ -21,7 +21,7 @@ Do these deliberately 'liberated' sounds merely traumatize the human senses, or 
 
 [[Open BCI](https://github.com/OpenBCI/OpenBCI_GUI)]
 
-**Core features of Open3D include:**
+**Core features of liberated frequencies include:**
 
 -   Deviation from Wavenet (https://arxiv.org/abs/1609.03499) based sound outouts.
 -   Brainwave lawdata receive via OSC.
