@@ -6,16 +6,9 @@
 
 <h4>
     <a href="https://www.open3d.org">Homepage</a> |
-    <a href="https://www.open3d.org/docs">Docs</a> |
-    <a href="https://www.open3d.org/docs/release/getting_started.html">Quick Start</a> |
-    <a href="https://www.open3d.org/docs/release/compilation.html">Compile</a> |
-    <a href="https://www.open3d.org/docs/release/index.html#python-api-index">Python</a> |
-    <a href="https://www.open3d.org/docs/release/cpp_api.html">C++</a> |
-    <a href="https://github.com/isl-org/Open3D-ML">Open3D-ML</a> |
-    <a href="https://github.com/isl-org/Open3D/releases">Viewer</a> |
-    <a href="https://www.open3d.org/docs/release/contribute/contribute.html">Contribute</a> |
-    <a href="https://www.youtube.com/channel/UCRJBlASPfPBtPXJSPffJV-w">Demo</a> |
-    <a href="https://github.com/isl-org/Open3D/discussions">Forum</a>
+    <a href="https://www.open3d.org/docs">Archives</a> |
+    <a href="https://www.open3d.org/docs/release/getting_started.html">This project Support by METI and Rhizomatiks as "Flying Tokyo 2024"</a> |
+
 </h4>
 
 Open3D is an open-source library that supports rapid development of software
