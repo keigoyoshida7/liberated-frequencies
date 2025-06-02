@@ -1,9 +1,8 @@
-# liberated-frequencies
 <p align="center">
 <img src="https://raw.githubusercontent.com/isl-org/Open3D/main/docs/_static/open3d_logo_horizontal.png" width="320" />
 </p>
 
-# Open3D: A Modern Library for 3D Data Processing
+# liberated-frequencies
 
 <h4>
     <a href="https://www.open3d.org">Homepage</a> |
@@ -31,22 +30,11 @@ the open-source community.
 
 **Core features of Open3D include:**
 
--   3D data structures
--   3D data processing algorithms
--   Scene reconstruction
--   Surface alignment
--   3D visualization
--   Physically based rendering (PBR)
--   3D machine learning support with PyTorch and TensorFlow
--   GPU acceleration for core 3D operations
--   Available in C++ and Python
+-   Deviation from Wavenet (https://github.com/isl-org/Open3D/assets/41028320/e9b8645a-a823-4d78-8310-e85207bbc3e4) based sound outouts.
+-   Brainwave lawdata receive via OSC.
+-   Sound Input and Output with tarageting channels.
 
-Here's a brief overview of the different components of Open3D and how they fit
-together to enable full end to end pipelines:
-
-![Open3D_layers](https://github.com/isl-org/Open3D/assets/41028320/e9b8645a-a823-4d78-8310-e85207bbc3e4)
-
-For more, please visit the [Open3D documentation](https://www.open3d.org/docs).
+For more like concepts, please visit the [liberated frequencies documentation](https://keigoyoshida.jp/room20.html).
 
 ## Python quick start
 
@@ -76,53 +64,19 @@ To get the latest features in Open3D, install the
 To compile Open3D from source, refer to
 [compiling from source](https://www.open3d.org/docs/release/compilation.html).
 
-## C++ quick start
-
-Checkout the following links to get started with Open3D C++ API
-
--   Download Open3D binary package: [Release](https://github.com/isl-org/Open3D/releases) or [latest development version](https://www.open3d.org/docs/latest/getting_started.html#c)
--   [Compiling Open3D from source](https://www.open3d.org/docs/release/compilation.html)
--   [Open3D C++ API](https://www.open3d.org/docs/release/cpp_api.html)
-
-To use Open3D in your C++ project, checkout the following examples
-
--   [Find Pre-Installed Open3D Package in CMake](https://github.com/isl-org/open3d-cmake-find-package)
--   [Use Open3D as a CMake External Project](https://github.com/isl-org/open3d-cmake-external-project)
-
-## Open3D-Viewer app
-
-<img width="480" src="https://raw.githubusercontent.com/isl-org/Open3D/main/docs/_static/open3d_viewer.png">
-
-Open3D-Viewer is a standalone 3D viewer app available on Debian (Ubuntu), macOS
-and Windows. Download Open3D Viewer from the
-[release page](https://github.com/isl-org/Open3D/releases).
-
-## Open3D-ML
-
-<img width="480" src="https://raw.githubusercontent.com/isl-org/Open3D-ML/main/docs/images/getting_started_ml_visualizer.gif">
-
-Open3D-ML is an extension of Open3D for 3D machine learning tasks. It builds on
-top of the Open3D core library and extends it with machine learning tools for
-3D data processing. To try it out, install Open3D with PyTorch or TensorFlow and check out
-[Open3D-ML](https://github.com/isl-org/Open3D-ML).
 
 ## Communication channels
 
--   [GitHub Issue](https://github.com/isl-org/Open3D/issues): bug reports,
-    feature requests, etc.
--   [Forum](https://github.com/isl-org/Open3D/discussions): discussion on the usage of Open3D.
--   [Discord Chat](https://discord.gg/D35BGvn): online chats, discussions,
-    and collaboration with other users and developers.
+-   [Instagram DM](https://www.instagram.com/keigoyoshida_/): bug reports,
+    feature requests,discussions etc.
 
 ## Citation
 
 Please cite our work if you use liberated frequencies.
 
 ```bib
-@article{Zhou2018,
     author    = {Keigo Yoshida and Rinko Oka and Ryuji Kurokawa (Arsaffix)},
     title     = {liberated frequencies},
     journal   = {none},
     year      = {2024},
-}
 ```
